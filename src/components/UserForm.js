@@ -8,11 +8,11 @@ const UserForm = (props) => {
     const value = useContext(UserContext)  
 
     const [formData, setFormData] = useState({
-      id: props.id,
-      name: props.name,
-      Dob: props.Dob,
-      email: props.email,
-      avitar: props.avitar,
+      id: props ? props.id : 0,
+      name: props ? props.name : '',
+      Dob: props ? props.Dob : '',
+      email: props ? props.email : '',
+      avitar: props ? props.avitar : '',
     });
     const handleChange = (props) => {
       const name = props.target.name
@@ -22,8 +22,11 @@ const UserForm = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault()
+      if(props.name){
       value.dispatch({type: 'UPDATE_USER', user: formData})
-      // value.dispatch({type: 'DELETE_USER', id: u.id})
+      }else{
+      value.dispatch({type: 'ADD_USER', user: formData})
+      }
     }
 
     return (

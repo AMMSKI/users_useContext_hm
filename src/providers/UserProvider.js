@@ -16,14 +16,14 @@ const UserProvider = (props) => {
   // const [users, setUsers] = useState(usersArr)
 
   const userReducer = (state, action) => {
-    console.log(action.user.id)
     switch (action.type) {
       case "ADD_USER":
+        console.log('add called')
         return [...state, action.user]
       case "DELETE_USER":
         return state.filter((u) => u.id != action.id)
       case "UPDATE_USER":
-        return state.map((u)=> u.id === action.user.id ? action.user : u)
+        return state.map((u)=> u.id === action.user.id ? {...u, name: action.user.name, email: action.user.email, id: action.user.id } : u)
       default:
         return state
     }
