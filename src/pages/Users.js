@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { TrashFill } from "react-bootstrap-icons";
+import styled from "styled-components";
 import UserProvider, { UserContext } from "../providers/UserProvider";
 
 const Users = () => {
@@ -11,7 +12,7 @@ const Users = () => {
   const renderUsers =() =>{
     return value.users.map((u)=> {
       return(
-      <div key={u.id}>
+      <Col key={u.id}>
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={u.avitar} />
         <Card.Body>
@@ -29,16 +30,19 @@ const Users = () => {
           </Button>
         </Card.Body>
       </Card>
-      </div>
+      </Col>
       )
     })
   }
   return (
-    <div>
+    <>
       <h1>Users</h1>
-      {renderUsers()}
-    </div>
+      <Row>
+        {renderUsers()}
+      </Row>
+    </>
   )
 }
+
 
 export default Users

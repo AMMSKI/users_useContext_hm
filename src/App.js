@@ -6,6 +6,8 @@ import NavBar from './components/NavBar';
 import User from './pages/User';
 import { UserContext } from './providers/UserProvider';
 import { useContext } from 'react';
+import { Container } from 'react-bootstrap';
+import UserForm from './components/UserForm';
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
         <Route exact path={'/'} component={Home} />
         <Route exact path={'/users'} component={Users}/>
         {renderRoute()}
+        <Route exact path={'/form'} component={UserForm}/>
       </Switch>
     </div>
   );

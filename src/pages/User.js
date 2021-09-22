@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import UserForm from "../components/UserForm";
 
 const User = (props) => {
+  const [showForm, setShowForm] = useState(false)
   const user = props
   return (
     <div>
@@ -15,8 +17,9 @@ const User = (props) => {
           <Card.Text>
             DoB: {user.Dob}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button onClick={() => setShowForm(!showForm)} variant="primary">Edit</Button>
         </Card.Body>
+          {showForm && <UserForm {...user}/>}
       </Card>
       </div>
   )
